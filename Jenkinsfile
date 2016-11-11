@@ -27,7 +27,7 @@ node {
         sh "docker login -u ${env.DOCKERHUB_USERNAME} -p ${env.DOCKERHUB_PASSWORD} -e demo@mesosphere.com"
         sh "docker push evaliauka/qcon-mesos:${gitCommit()}"
     }
-}
+
 
     // Deploy
     stage 'Deploy'
@@ -40,3 +40,6 @@ node {
         appId: 'nginx-evaliauka',
         docker: "evaliauka/qcon-mesos:${gitCommit()}".toString()
     )
+
+}
+
